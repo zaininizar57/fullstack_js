@@ -1,16 +1,16 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
-const AddProduct = () => {
+const EditeProduct = () => {
   const [title, setTitle] = useState();
   const [price, setPrice] = useState();
-
+  const { id } = useParams();
   const navigate = useNavigate();
 
-  const saveProduct = async (e) => {
+  const updateProduct = async (e) => {
     e.preventDefault();
-    await axios.post("http://localhost:5000/products", {
+    await axios.patch(`http://localhost:5000/products/${id}`, {
       title: title,
       price: price,
     });
@@ -18,9 +18,19 @@ const AddProduct = () => {
     navigate("/");
   };
 
+  useEffect(() => {
+    getProductById();
+  }, []);
+
+  const getProductById = async (e) => {
+    const response = await axios.get(`http://localhost:5000/products/${id}`);
+    setTitle(response.data.title);
+    setPrice(response.data.price);
+  };
+
   return (
     <div>
-      <form onSubmit={saveProduct}>
+      <form onSubmit={updateProduct}>
         <div className="field">
           <lable className="label">Title</lable>
           <input
@@ -42,11 +52,11 @@ const AddProduct = () => {
           />
         </div>
         <div className="field">
-          <button className="button is-primary">Save</button>
+          <button className="button is-primary">Update</button>
         </div>
       </form>
     </div>
   );
 };
 
-export default AddProduct;
+export default EditeProduct;

@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 const ProductList = () => {
   const [products, setProduct] = useState([]);
@@ -13,8 +14,20 @@ const ProductList = () => {
     setProduct(response.data);
   };
 
+  const deleteProduct = async (id) => {
+    const response = await axios.delete(`http://localhost:5000/products/${id}`);
+    getProducts();
+  };
+
   return (
-    <div>
+    <div className="mt-4 box">
+      <Link to="/add" className="button is-primary mt-4">
+        Add New Product
+      </Link>
+      <div className="notification is-danger mt-4">
+        <button className="delete"></button>
+        Product Berhasil di Hapus
+      </div>
       <table className="table is-stripped is-fullwidth">
         <thead>
           <tr>
@@ -29,10 +42,20 @@ const ProductList = () => {
             <tr key={product.id}>
               <td>{index + 1}</td>
               <td>{product.title}</td>
-              <td>{product.price}</td>
+              <td>Rp{product.price}</td>
               <td>
-                <a className="button is-small is-info">Button</a>
-                <a className="button is-small is-danger">Delete</a>
+                <Link
+                  to={`/edite/${product.id}`}
+                  className="button is-small is-info"
+                >
+                  Edite
+                </Link>
+                <a
+                  onClick={() => deleteProduct(product.id)}
+                  className="button is-small is-danger"
+                >
+                  Delete
+                </a>
               </td>
             </tr>
           ))}
