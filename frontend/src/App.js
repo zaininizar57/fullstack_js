@@ -6,7 +6,7 @@ import EditeProduct from "./components/EditeProduct";
 function App() {
   return (
     <Router>
-      <div className="container">
+      <div className="container mt-4">
         <div className="columns">
           <div className="column is-half is-offset-one-quarter">
             <Routes>

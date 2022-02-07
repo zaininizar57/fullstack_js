@@ -1,9 +1,11 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import "./../Style.css";
 
 const ProductList = () => {
   const [products, setProduct] = useState([]);
+  const [alert, setAlert] = useState(false);
 
   useEffect(() => {
     getProducts();
@@ -19,14 +21,16 @@ const ProductList = () => {
     getProducts();
   };
 
+  const alertClass = "notification is-danger mt-2 hidden";
+
   return (
     <div className="mt-4 box">
       <Link to="/add" className="button is-primary mt-4">
         Add New Product
       </Link>
-      <div className="notification is-danger mt-4">
-        <button className="delete"></button>
-        Product Berhasil di Hapus
+      <div className={alertClass}>
+        <button class="delete"></button> Lorem ipsum dolor sit amet, consectetur
+        adipiscing elit lorem ipsum dolor sit amet, consectetur adipiscing elit{" "}
       </div>
       <table className="table is-stripped is-fullwidth">
         <thead>
@@ -46,7 +50,7 @@ const ProductList = () => {
               <td>
                 <Link
                   to={`/edite/${product.id}`}
-                  className="button is-small is-info"
+                  className="button is-small is-info mr-2"
                 >
                   Edite
                 </Link>

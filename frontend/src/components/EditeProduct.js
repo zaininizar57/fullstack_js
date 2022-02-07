@@ -29,7 +29,7 @@ const EditeProduct = () => {
   };
 
   return (
-    <div>
+    <div className="box mt-4">
       <form onSubmit={updateProduct}>
         <div className="field">
           <lable className="label">Title</lable>
