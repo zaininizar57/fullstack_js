@@ -6,13 +6,23 @@ import {
   updateProduct,
   deleteProduct,
 } from "../controllers/Products.js";
+import { refreshToken } from "../controllers/RefreshToken.js";
+import { getUsers, Register, Login } from "../controllers/Users.js";
+import { verifyToken } from "../middleware/VerifyToken.js";
 
 const router = express.Router();
 
-router.get("/", getAllProducts);
-router.get("/:id", getProductById);
-router.post("/", createProduct);
-router.patch("/:id", updateProduct);
-router.delete("/:id", deleteProduct);
+//route user
+router.get("/users", verifyToken, getUsers);
+router.post("/user", Register);
+router.post("/login", Login);
+router.get("/token", refreshToken);
+
+//route product
+router.get("/products", getAllProducts);
+router.get("/product/:id", getProductById);
+router.post("/product", createProduct);
+router.patch("/product/:id", updateProduct);
+router.delete("/product/:id", deleteProduct);
 
 export default router;
