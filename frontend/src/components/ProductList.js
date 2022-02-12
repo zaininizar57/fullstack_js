@@ -24,47 +24,54 @@ const ProductList = () => {
   const alertClass = "notification is-danger mt-2 hidden";
 
   return (
-    <div className="mt-4 box">
-      <Link to="/add" className="button is-primary mt-4">
-        Add New Product
-      </Link>
-      <div className={alertClass}>
-        <button class="delete"></button> Lorem ipsum dolor sit amet, consectetur
-        adipiscing elit lorem ipsum dolor sit amet, consectetur adipiscing elit{" "}
+    <div className="container mt-4">
+      <div className="columns">
+        <div className="column is-half is-offset-one-quarter">
+          <div className="mt-4 box">
+            <Link to="/add" className="button is-primary mt-4">
+              Add New Product
+            </Link>
+            <div className={alertClass}>
+              <button className="delete"></button> Lorem ipsum dolor sit amet,
+              consectetur adipiscing elit lorem ipsum dolor sit amet,
+              consectetur adipiscing elit{" "}
+            </div>
+            <table className="table is-stripped is-fullwidth">
+              <thead>
+                <tr>
+                  <th>No</th>
+                  <th>Title</th>
+                  <th>Price</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                {products.map((product, index) => (
+                  <tr key={product.id}>
+                    <td>{index + 1}</td>
+                    <td>{product.title}</td>
+                    <td>Rp{product.price}</td>
+                    <td>
+                      <Link
+                        to={`/edite/${product.id}`}
+                        className="button is-small is-info mr-2"
+                      >
+                        Edite
+                      </Link>
+                      <a
+                        onClick={() => deleteProduct(product.id)}
+                        className="button is-small is-danger"
+                      >
+                        Delete
+                      </a>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
       </div>
-      <table className="table is-stripped is-fullwidth">
-        <thead>
-          <tr>
-            <th>No</th>
-            <th>Title</th>
-            <th>Price</th>
-            <th>Action</th>
-          </tr>
-        </thead>
-        <tbody>
-          {products.map((product, index) => (
-            <tr key={product.id}>
-              <td>{index + 1}</td>
-              <td>{product.title}</td>
-              <td>Rp{product.price}</td>
-              <td>
-                <Link
-                  to={`/edite/${product.id}`}
-                  className="button is-small is-info mr-2"
-                >
-                  Edite
-                </Link>
-                <a
-                  onClick={() => deleteProduct(product.id)}
-                  className="button is-small is-danger"
-                >
-                  Delete
-                </a>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
     </div>
   );
 };

@@ -30,7 +30,7 @@ DELETE http://localhost:5000/products/3
 
 ##### users
 GET http://localhost:5000/users
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsInVzZXJOYW1lIjoiQWhtYWQgWmFpbmkgTmlqYXIiLCJ1c2VyRW1haWwiOiJ6YWluaW5pamFyNzYxMEBnbWFpbC5jb20iLCJpYXQiOjE2NDQzODUyNTksImV4cCI6MTY0NDM4NTI3OX0.bn-GUcvSMNI23vIB8XJA9ghLpJX-SHdvpvTLJUE_jG8
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsInVzZXJOYW1lIjoiQWhtYWQgWmFpbmkgTmlqYXIiLCJ1c2VyRW1haWwiOiJ6YWluaW5pamFyNzYxMEBnbWFpbC5jb20iLCJpYXQiOjE2NDQ2Mzk3OTAsImV4cCI6MTY0NDYzOTgxMH0.4IF77o6RswTckQ1LY0QmIBYtG4kbCv9X_tlHVpkMv7E
 
 
 #####
@@ -52,3 +52,9 @@ Content-Type: application/json
     "email": "zaininijar7610@gmail.com",
     "password": "zaininizar0809"
 }
+
+######
+GET http://localhost:5000/token
+
+######
+DELETE http://localhost:5000/Logout

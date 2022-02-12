@@ -29,32 +29,38 @@ const EditeProduct = () => {
   };
 
   return (
-    <div className="box mt-4">
-      <form onSubmit={updateProduct}>
-        <div className="field">
-          <lable className="label">Title</lable>
-          <input
-            className="input"
-            type="text"
-            placeholder="Title"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-          />
+    <div className="container mt-4">
+      <div className="columns">
+        <div className="column is-half is-offset-one-quarter">
+          <div className="box mt-4">
+            <form onSubmit={updateProduct}>
+              <div className="field">
+                <lable className="label">Title</lable>
+                <input
+                  className="input"
+                  type="text"
+                  placeholder="Title"
+                  value={title}
+                  onChange={(e) => setTitle(e.target.value)}
+                />
+              </div>
+              <div className="field">
+                <lable className="label">Price</lable>
+                <input
+                  className="input"
+                  type="number"
+                  placeholder="Price"
+                  value={price}
+                  onChange={(e) => setPrice(e.target.value)}
+                />
+              </div>
+              <div className="field">
+                <button className="button is-primary">Update</button>
+              </div>
+            </form>
+          </div>
         </div>
-        <div className="field">
-          <lable className="label">Price</lable>
-          <input
-            className="input"
-            type="number"
-            placeholder="Price"
-            value={price}
-            onChange={(e) => setPrice(e.target.value)}
-          />
-        </div>
-        <div className="field">
-          <button className="button is-primary">Update</button>
-        </div>
-      </form>
+      </div>
     </div>
   );
 };
