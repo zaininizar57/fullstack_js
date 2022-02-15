@@ -3,19 +3,19 @@ import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 
 const EditeProduct = () => {
-  const [title, setTitle] = useState();
-  const [price, setPrice] = useState();
+  const [title, setTitle] = useState("");
+  const [price, setPrice] = useState("");
   const { id } = useParams();
   const navigate = useNavigate();
 
   const updateProduct = async (e) => {
     e.preventDefault();
-    await axios.patch(`http://localhost:5000/products/${id}`, {
+    await axios.put(`http://localhost:5000/product/${id}`, {
       title: title,
       price: price,
     });
 
-    navigate("/");
+    navigate("/products");
   };
 
   useEffect(() => {
@@ -23,7 +23,7 @@ const EditeProduct = () => {
   }, []);
 
   const getProductById = async (e) => {
-    const response = await axios.get(`http://localhost:5000/products/${id}`);
+    const response = await axios.get(`http://localhost:5000/product/${id}`);
     setTitle(response.data.title);
     setPrice(response.data.price);
   };

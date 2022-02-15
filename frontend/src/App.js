@@ -11,7 +11,7 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route exact path="/" element={<ProductList />} />
+        <Route exact path="/products" element={<ProductList />} />
         <Route path="/add" element={<AddProduct />} />
         <Route path="/edite/:id" element={<EditeProduct />} />
         <Route exact path="/login" element={<Login />} />

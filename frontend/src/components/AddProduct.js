@@ -3,8 +3,8 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 const AddProduct = () => {
-  const [title, setTitle] = useState();
-  const [price, setPrice] = useState();
+  const [title, setTitle] = useState("");
+  const [price, setPrice] = useState("");
 
   const navigate = useNavigate();
 
@@ -15,7 +15,7 @@ const AddProduct = () => {
       price: price,
     });
 
-    navigate("/");
+    navigate("/products");
   };
 
   return (

@@ -6,6 +6,8 @@ import cors from "cors";
 import Users from "./models/UserModel.js";
 import cookieParser from "cookie-parser";
 
+// var cors = require("cors");
+
 dotenv.config();
 
 const app = express();
@@ -20,7 +22,26 @@ try {
 
 app.use(cookieParser());
 app.use(express.json());
+
+app.use(function (req, res, next) {
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers"
+  );
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Credentials", true);
+  res.header("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE");
+  next();
+});
+
 app.use(router);
-app.use(cors({ credentials: true, origin: "http://localhost:3000" }));
+
+app.use(
+  cors({
+    origin: "*",
+    withCredentials: true,
+    optionSuccessStatus: 200,
+  })
+);
 
 app.listen(5000, () => console.log("server running at port 5000"));

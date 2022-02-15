@@ -17,7 +17,7 @@ const ProductList = () => {
   };
 
   const deleteProduct = async (id) => {
-    const response = await axios.delete(`http://localhost:5000/products/${id}`);
+    const response = await axios.delete(`http://localhost:5000/product/${id}`);
     getProducts();
   };
 
