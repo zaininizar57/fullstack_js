@@ -24,9 +24,9 @@ const ProductList = () => {
   const alertClass = "notification is-danger mt-2 hidden";
 
   return (
-    <div className="container mt-4">
+    <div className="container mt-4 is-fullwidth">
       <div className="columns">
-        <div className="column is-half is-offset-one-quarter">
+        <div className="column">
           <div className="mt-4 box">
             <Link to="/add" className="button is-primary mt-4">
               Add New Product

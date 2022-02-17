@@ -18,8 +18,8 @@ export const refreshToken = async (req, res) => {
       (err, decoded) => {
         if (err) return res.sendStatus(403);
         const userId = user[0].id;
-        const userName = user[0].name;
-        const userEmail = user[0].id;
+        const userName = user[0].username;
+        const userEmail = user[0].email;
 
         const accessToken = jwt.sign(
           { userId, userName, userEmail },
